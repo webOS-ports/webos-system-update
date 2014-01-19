@@ -16,7 +16,7 @@
  */
 
 import QtQuick 2.0
-import org.webosports.webosupdater 1.0
+import org.webosports.webossystemupdate 1.0
 
 Rectangle {
     id: root
@@ -63,7 +63,7 @@ Rectangle {
 
     MonitoredApp {
         id: myAppMonitor
-        scriptAction: "/bin/sh ./data/run-update.sh"
+        scriptAction: "/bin/sh " + scriptPath
 
         onNewStepString:contentColumn.stepDescription = stepDescription;
         onNewDetailString:contentColumn.detailText = detailText;

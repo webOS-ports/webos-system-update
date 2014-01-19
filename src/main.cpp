@@ -24,9 +24,16 @@
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
-    qmlRegisterType<MonitoredApplication>("org.webosports.webosupdater", 1 , 0 , "MonitoredApp");
+    qmlRegisterType<MonitoredApplication>("org.webosports.webossystemupdate", 1 , 0 , "MonitoredApp");
+
+    QString scriptPath;
+    if( app.arguments().size() > 0 )
+    {
+        scriptPath = app.arguments().at(1);
+    }
 
     QtQuick2ApplicationViewer viewer;
+    viewer.rootContext()->setContextProperty("scriptPath",  scriptPath);
     viewer.setMainQmlFile(QStringLiteral("qml/main.qml"));
     viewer.showExpanded();
 
