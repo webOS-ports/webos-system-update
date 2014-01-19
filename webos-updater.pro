@@ -1,7 +1,9 @@
 # Add more folders to ship with the application, here
 folder_01.source = qml
 folder_01.target = .
-DEPLOYMENTFOLDERS = folder_01
+folder_02.source = data
+folder_02.target = .
+DEPLOYMENTFOLDERS = folder_01 folder_02
 
 # Additional import path used to resolve QML modules in Creator's code model
 QML_IMPORT_PATH =
@@ -26,4 +28,5 @@ HEADERS += \
     src/monitoredapplication.h
 
 OTHER_FILES += \
-    qml/images/activity-progress.png
+    qml/images/activity-progress.png \
+    data/run-update.sh
