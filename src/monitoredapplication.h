@@ -10,16 +10,24 @@ class MonitoredApplication : public QObject
 public:
     explicit MonitoredApplication(QObject *parent = 0);
 
-    Q_PROPERTY( QString appName READ appName WRITE setAppName )
+    Q_PROPERTY( QString scriptAction READ scriptAction WRITE setScriptAction )
 
-    QString appName() const;
-    void setAppName(const QString &appName);
+    QString scriptAction() const;
+    void setScriptAction(const QString &scriptAction);
 
     Q_INVOKABLE void launchScript();
 
+Q_SIGNALS:
+    void newStepString(const QString stepDescription);
+    void newProgressHint(int hint);
+    void newDetailString(const QString detailText);
+
 private:
     QProcess *m_process;
-    QString m_AppName;
+    QString m_ScriptAction;
+
+private Q_SLOTS:
+    void onReadyReadStandardOutput();
 };
 
 #endif // MONITOREDAPPLICATION_H
