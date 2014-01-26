@@ -34,6 +34,11 @@ int main(int argc, char *argv[])
 
     scriptPath = app.arguments().at(1);
 
+    if (!QFile::exists(scriptPath)) {
+        qWarning("Update script at path %s does not exists!", scriptPath.toUtf8().constData());
+        exit(1);
+    }
+
     QtQuick2ApplicationViewer viewer;
     viewer.rootContext()->setContextProperty("scriptPath",  scriptPath);
     viewer.setMainQmlFile(QStringLiteral("qml/main.qml"));
