@@ -17,7 +17,7 @@
 
 #include <QtGui/QGuiApplication>
 #include <QtQml>
-#include "qtquick2applicationviewer.h"
+#include <QQuickView>
 
 #include "monitoredapplication.h"
 
@@ -39,10 +39,13 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    QtQuick2ApplicationViewer viewer;
+    qDebug() << "Using script at" << scriptPath;
+
+    QQuickView viewer;
     viewer.rootContext()->setContextProperty("scriptPath",  scriptPath);
-    viewer.setMainQmlFile(QStringLiteral("qml/main.qml"));
-    viewer.showExpanded();
+    viewer.setSource(QUrl("qrc:///qml/main.qml"));
+    viewer.setResizeMode(QQuickView::SizeRootObjectToView);
+    viewer.showFullScreen();
 
     return app.exec();
 }

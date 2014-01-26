@@ -21,7 +21,7 @@ import org.webosports.webossystemupdate 1.0
 Rectangle {
     id: root
 
-    color: "black";
+    color: "black"
 
     Column {
         id: contentColumn
