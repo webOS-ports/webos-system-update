@@ -27,10 +27,12 @@ int main(int argc, char *argv[])
     qmlRegisterType<MonitoredApplication>("org.webosports.webossystemupdate", 1 , 0 , "MonitoredApp");
 
     QString scriptPath;
-    if( app.arguments().size() > 0 )
-    {
-        scriptPath = app.arguments().at(1);
+    if (app.arguments().size() != 2) {
+        qWarning("usage: webos-system-update <path to update script>");
+        exit(1);
     }
+
+    scriptPath = app.arguments().at(1);
 
     QtQuick2ApplicationViewer viewer;
     viewer.rootContext()->setContextProperty("scriptPath",  scriptPath);
