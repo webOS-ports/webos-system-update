@@ -3,7 +3,8 @@ Description=Run the webOS system update
 
 [Service]
 Type=oneshot
-ExecStart=/usr/sbin/webos-system-update /usr/bin/run-update.sh
+Environment=EGL_PLATFORM=fbdev
+ExecStart=/usr/sbin/webos-system-update -platform eglfs /usr/bin/run-update.sh
 StandardOutput=syslog
 RemainAfterExit=No
 
