@@ -21,7 +21,7 @@ echo "NOTE: Installing ${NUM_PACKAGES} packages"
 
 echo "PROGRESS: 8"
 
-opkg $OPKG_FLAGS --cache=${CACHE_DIR} upgrade
+opkg $OPKG_FLAGS -o / --cache=${CACHE_DIR} upgrade
 
 echo "NOTE: All packages are installed now"
 echo "PROGRESS: 16"
@@ -31,6 +31,10 @@ echo "NOTE: Cleaning up"
 rm -rf ${CACHE_DIR}
 rm -f /system-update
 echo "PROGRESS: 18"
+
+# Enable opkg configure job for next boot as we didn't performed
+# any post installation steps
+systemctl enable opkg-configure
 
 echo "NOTE: Rebooting system"
 echo "PROGRESS: 19"
