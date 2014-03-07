@@ -18,6 +18,7 @@
 #include <QtGui/QGuiApplication>
 #include <QtQml>
 #include <QQuickView>
+#include <QFont>
 
 #include "monitoredapplication.h"
 
@@ -40,6 +41,9 @@ int main(int argc, char *argv[])
     }
 
     qDebug() << "Using script at" << scriptPath;
+
+    QFont defaultFont("Prelude");
+    app.setFont(defaultFont);
 
     QQuickView viewer;
     viewer.rootContext()->setContextProperty("scriptPath",  scriptPath);
