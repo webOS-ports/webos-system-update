@@ -36,6 +36,11 @@ echo "PROGRESS: 18"
 # any post installation steps
 systemctl enable opkg-configure
 
+# If we're forced to update to a specific verison update the current-version file
+if [ -e /var/preferences/system-update/update-to-version ] ; then
+    cat /var/preferences/system-update/update-to-version > /var/preferences/system-update/current-version
+fi
+
 echo "NOTE: Rebooting system"
 echo "PROGRESS: 19"
 
