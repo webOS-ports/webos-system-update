@@ -37,7 +37,7 @@ Rectangle {
             id: stepTextItem
 
             color: "white"
-            text: qsTr("Current step: " + contentColumn.stepDescription);
+            text: qsTr(contentColumn.stepDescription);
             anchors.horizontalCenter: parent.horizontalCenter
         }
         AnimatedSprite {
